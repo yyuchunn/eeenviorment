@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>通網節能e三方</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style_hearder.css">
     <link rel="stylesheet" href="style_body.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -24,11 +26,71 @@
                 <span>選單</span>
             </label>
             <nav>
-                <a href="lazy.html ">懶人版</a>
-                <a href="vip.html ">客製化</a>
+                <a href="lazy.html">懶人版</a>
+                <a href="vip.html">客製化</a>
             </nav>
         </div>
     </div>
+    <!-- 選擇 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>洗衣機</h1>
+                <select name="washingMachine" require=true>
+                    <option value="">請選擇家庭成員</option>
+                    <option value="1">1~2人</option>
+                    <option value="2">3~4人</option>
+                    <option value="3">5人↑</option>
+                    <option value="4">不需要</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <h1>冰箱</h1>
+                <select name="refrigerator">
+                    <option value="">請選擇家庭成員</option>
+                    <option value="1">1~2人</option>
+                    <option value="2">3~4人</option>
+                    <option value="3">5人↑</option>
+                    <option value="4">不需要</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <h1>電視</h1>
+                <select name="tv">
+                    <option value="">請選擇家庭成員</option>
+                    <option value="1">1~2人</option>
+                    <option value="2">3~4人</option>
+                    <option value="3">5人↑</option>
+                    <option value="4">不需要</option>
+                </select>
+            </div>
+            <button id="search">送出</button>
+        </div>
+        <div id="result"></div>
+        <div id="result_price"></div>
+    </div>
+
 </body>
+<script type="text/JavaScript">
+$(document).ready(function() {
+    $("#search").click(function() {
+        $.ajax({
+            type: "GET",
+            url: "https://eeenviorment.000webhostapp.com/db.php",
+            dataType: "json",
+            success: function(response) {
+                // 成功要做的動作
+                console.log(response);
+
+                $('#result').html('<p>'+response.data.name+'</p>')
+                $('#result_price').html('<p>'+response.data.price+'</p>')
+            },
+            error: function(jqXHR) {
+                alert("發生錯誤: " + jqXHR.status);
+            }
+        })
+    })
+});
+</script>
 
 </html>
