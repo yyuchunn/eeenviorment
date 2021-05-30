@@ -6,29 +6,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>通網節能e三方</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style_hearder.css">
-    <link rel="stylesheet" href="style_body.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <input type="checkbox" name="" id="menu_control">
-    <div class="header">
-        <div class="container">
-            <h1 class="logo">
-                <a href="home.html"><img src="https://picsum.photos/id/684/80/40 " alt="通網節能e三方 "></a>
-                <!-- 通常logo大小都80/40 -->
-            </h1>
-            <label for="menu_control " class="menu_btn ">
-                <span>選單</span>
-            </label>
-            <nav>
-                <a href="lazy.html ">懶人版</a>
-                <a href="vip.html ">客製化</a>
-            </nav>
+    <!-- navbar 表示這是一個 flex-box -->
+    <!-- navbar-expand-md 負責轉手機版的寬度, lg:991以下轉手機版, md:767以下轉手機版, sm:575以下轉手機版 -->
+    <!-- navbar-dark讓文字為白色, bg-dark負責背景顏色為暗底 -->
+    <!-- fixed-top固定導覽列在最上方-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <!--  這是 LOGO 文字或圖片  -->
+        <a class="navbar-brand" href="home.html">LOGO</a>
+        <!--  這是手機版時右上角呈現的選單按鈕, 注意:data-target表示按下這個按鈕時要控制展開收合的物件ID名稱  -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Nav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <!-- 這是按鈕上呈現的icon圖案 -->
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar-collapse表示這個框架區塊是可收展開的, 注意:id名稱必須跟button中的data-target一樣 -->
+        <div class="collapse navbar-collapse" id="Nav">
+            <ul class="navbar-nav ml-auto">
+                <!-- active表示目前在這個位置,如果不需要則刪除  -->
+                <!-- sr-only 為殘障人士設計 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">首頁</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="lazy.html">懶人版<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="vip.html">客製化</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+    <!-- 導覽列結束 -->
+    <!-- 選擇 -->
+    <div class="container" id="select_area">
+        <div class="row row justify-content-around align-items-center text-center">
+            <div class="col-md-6">
+                <h1>預算</h1>
+                <img src="image/money.png" alt="" />
+                <br>
+                <select name="budget" require=true>
+                    <option value="" selected hidden>請選擇預算</option>
+                    <option value="1">1~2萬</option>
+                    <option value="2">3~4萬</option>
+                    <option value="3">5~6萬</option>
+                    <option value="4">頂級規格</option>
+                    <option value="5">不需要</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <h1>家庭成員人數</h1>
+                <img src="image/selection.png" />
+                <br>
+                <select name="people">
+                    <option value="" selected hidden>請選擇家庭成員</option>
+                    <option value="6">1~2人</option>
+                    <option value="7">3~4人</option>
+                    <option value="8">5人↑</option>
+                    <option value="9">不需要</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <button id="search" class="btn btn-dark">送出</button>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
     </div>
+    <!-- 選擇結束 -->
+    <!-- 查詢結果 -->
+    <div class="container" id="result_area">
+        <table class="table table-bordered table-striped table-hover ">
+            <tr>
+                <td>
+                    <h2>方案一：最高規格</h2>
+                    <div id="plan1_total">total1</div>
+                </td>
+                <td>
+                    <div id="plan1_result">result1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="plan2_result">result2</div>
+                </td>
+                <td>
+                    <h2>方案二：CP值最高</h2>
+                    <div id="plan2_total">total2</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>方案三：最省電</h2>
+                    <div id="plan3_total">total3</div>
+                </td>
+                <td>
+                    <div id="plan3_result">result3</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="plan4_result">result4</div>
+                </td>
+                <td>
+                    <h2>方案四：最低規格</h2>
+                    <div id="plan4_total">total4</div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <!-- 查詢結果 -->
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            <sub>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/dimitry-miroliubov"
+                        title="Dimitry Miroliubov">Dimitry
+                        Miroliubov</a> and <a href="https://www.flaticon.com/authors/freepik"
+                        title="Freepik">Freepik</a>
+                    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                </div>
+                <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </body>
 
 </html>

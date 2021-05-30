@@ -1,20 +1,59 @@
 body{
-    font-family: 'Noto Serif TC', serif;
+    /* font-family: 'Noto Serif TC', serif; */
+    /* font-family: '微軟正黑體'; */
+    font-family: 'Noto Sans TC', sans-serif;
 }
-.container{
+#home_area{
     width: 100vw;
     height: 60vh;
     position: relative;
 }
-.row{
+#home_area .row,#select_area .row{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.jumbotron{
+    margin: 0 auto;
+}
+/* 客製化&懶人版 */
+#select_area{
+    top: 100px;
+    width: 100vw;
+    height: 80vh;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 5px 5px 5px 5px;
+}
+#result_area{
+    top: 100px;
+    width: 100vw;
+    height: 80vh;
+    position: relative;
+    margin: 20px auto;
+}
+
+/* .row{
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+} */
+.row h1{
+    font-size: 60px;
+    margin: 3vh 0vh;
+}
+.row select{
+    margin: 3vh 0px;
+    font-size: 25px;
 }
 .card{
+    width: 70%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: .5s;
 }
@@ -24,10 +63,22 @@ body{
     align-items:center; 
     text-decoration: none; 
     color: black;
-    font-size: 25px;
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    transform: translateY(-10%);
+    transform: translateY(-5%);
 }
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+    #select_area{
+        top: 80px;
+        width: 90vw;
+        height: 180vh;
+    }
+    .row h1{
+        font-size: 40px;
+    }
+    .row img{
+        height: 200px;
+    }
 
+}
