@@ -98,41 +98,99 @@
     <!-- 選擇結束 -->
     <!-- 查詢結果 -->
     <div class="container" id="result_area">
-        <table class="table table-bordered table-striped table-hover ">
+        <table class="table table-bordered table-striped table-hover">
             <tr>
                 <td>
                     <h2>方案一：最高規格</h2>
-                    <div id="plan1_total">total1</div>
+                    <div id="plan1_total" class="total">
+                        $XXXX
+                    </div>
                 </td>
                 <td>
-                    <div id="plan1_result">result1</div>
+                    <div id="plan1_result" class="result">
+                        <h3>洗衣機：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>公升數</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                        <h3>冰箱：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>EF值</p>
+                        <p>$XXXXX</p>
+                        <h3>電視：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div id="plan2_result">result2</div>
+                    <div id="plan2_result" class="result">
+                        <h3>洗衣機：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>公升數</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                        <h3>冰箱：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>EF值</p>
+                        <p>$XXXXX</p>
+                        <h3>電視：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                    </div>
                 </td>
                 <td>
                     <h2>方案二：CP值最高</h2>
-                    <div id="plan2_total">total2</div>
+                    <div id="plan2_total" class="total">$XXXX</div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <h2>方案三：最省電</h2>
-                    <div id="plan3_total">total3</div>
+                    <div id="plan3_total" class="total">$XXXX</div>
                 </td>
                 <td>
-                    <div id="plan3_result">result3</div>
+                    <div id="plan3_result" class="result">
+                        <h3>洗衣機：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>公升數</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                        <h3>冰箱：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>EF值</p>
+                        <p>$XXXXX</p>
+                        <h3>電視：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div id="plan4_result">result4</div>
+                    <div id="plan4_result" class="result">
+                        <h3>洗衣機：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>公升數</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                        <h3>冰箱：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>EF值</p>
+                        <p>$XXXXX</p>
+                        <h3>電視：</h3>
+                        <p>品牌名稱 產品型號</p>
+                        <p>耗電量</p>
+                        <p>$XXXXX</p>
+                    </div>
                 </td>
                 <td>
                     <h2>方案四：最低規格</h2>
-                    <div id="plan4_total">total4</div>
+                    <div id="plan4_total" class="total">$XXXX</div>
                 </td>
             </tr>
         </table>
@@ -152,25 +210,24 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-</body>
 
-<script type="text/JavaScript">
+    <Script type="text/JavaScript">
+
 $(document).ready(function() {
     $("#search").click(function() {
         var washingMachine = $("#washingMachine").val();
         var refrigerator = $("#refrigerator").val();
         var tv = $("#tv").val();
-        var result = washingMachine + refrigerator + tv;
+        var search = washingMachine + refrigerator + tv;
         $.ajax({
             type: "GET",
-            url: "ReturnTest.php",
+            url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
             dataType: "json",
             success: function(response) {
                 // 成功要做的動作
                 console.log(response);
-                $('#plan1_result').html('<p>洗衣機：'+response.data.name+'</p><p>價格：'+response.data.price+'</p>')
-                // $('#result').html('<p>'+response.data.price+'</p>')
-                // $('#result_price').html('<p>'+response.data.price+'</p>')
+                $('#plan1_total').html('<p>'+response.data.price+'</p>')
+                $('#plan1_result').html('<p>洗衣機：'+response.data[0]+'</p>'+'<p>冰箱：'+response.data[1]+'</p>'+'<p>電視：'+response.data.name+'</p>')
             },
             error: function(jqXHR,textStatus,errorThrown) {
                 alert("發生錯誤: " + jqXHR.status);
@@ -179,9 +236,13 @@ $(document).ready(function() {
                 console.log("3 非同步呼叫返回失敗,textStatus:"+textStatus);
                 console.log("4 非同步呼叫返回失敗,errorThrown:"+errorThrown);
             }
+
+            // WriteResult('#plan1_result',100);
         })
+        $('table').show();
     })
 });
-</script>
+</Script>
+</body>
 
 </html>
