@@ -16,11 +16,18 @@ body{
     right: 0;
     margin: 0 auto;
 }
- .navbar-brand{
+.navbar{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar-brand{
     margin: 0px;
     font-size: 50px;
     font-family: 'Indie Flower', cursive;
-    padding: 0px 25px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 .nav-link{
     font-size: 25px;
@@ -41,21 +48,27 @@ footer{
 }
 #select_area{
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     position: relative;
     border: 1px solid black;
     border-radius: 5px 5px 5px 5px;
-    top: 110px;
+    top: 115px;
 }
 #select_area button{
-    font-size: 25px;
+    font-size: 35px;
+}
+#select_area p{
+    margin: 15px auto;
+}
+#vip #blank,#lazy #blank{
+    height: 30vh;
 }
 #blank{
     height: 15vh;
 }
 #result_area{
     width: 100vw;
-    height: 60vh;
+    height: 350vh;
     position: relative;
     display: none;
     margin: 130px auto;
@@ -102,7 +115,8 @@ footer{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-5%);
 }
-@media only screen and (min-width: 280px) and (max-width: 765px) {
+
+@media only screen and (max-width: 767px){
     .jumbotron h1{
         font-size: 40px;
     }
@@ -110,19 +124,26 @@ footer{
         font-size: 20px;
     }
     #home_area{
-        height: 115vh;
+        height: 120vh;
     }
-    
     #home_area .card{
-        width: 60%;
+        width: 50%;
     }
     #select_area{
         top: 105px;
         width: 90vw;
-        height: 235vh;
+    }
+    #vip #select_area{
+        height: 140vh;
+    }
+    #lazy #select_area{
+        height: 130vh;
+    }
+    #select_area img{
+        width: 25%;
     }
     #result_area{
-        height: 80vh;
+        height: 320vh;
     }
     #result_area .card-header{
         padding: 0 40px;
@@ -133,7 +154,6 @@ footer{
     #result_area h3{
         font-size: 20px;
         margin: 5px 20px;
-
     }
     #result_area p{
         font-size: 18px;
@@ -142,5 +162,12 @@ footer{
     }
     .row h1{
         font-size: 40px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){   
+   /* css for pad ....... */
+    #select_area img{
+        width: 50%;
     }
 }

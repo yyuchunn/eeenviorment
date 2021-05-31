@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="lazy">
     <!-- navbar 表示這是一個 flex-box -->
     <!-- navbar-expand-md 負責轉手機版的寬度, lg:991以下轉手機版, md:767以下轉手機版, sm:575以下轉手機版 -->
     <!-- navbar-dark讓文字為白色, bg-dark負責背景顏色為暗底 -->
@@ -50,7 +50,7 @@
     <!-- 導覽列結束 -->
     <!-- 選擇 -->
     <div class="container" id="select_area">
-        <div class="row row justify-content-around align-items-center text-center">
+        <div class="row justify-content-around align-items-center text-center">
             <div class="col-md-6">
                 <h1>預算</h1>
                 <img src="image/money.png" alt="" />
@@ -65,7 +65,7 @@
                 </select>
             </div>
             <div class="col-md-6">
-                <h1>家庭成員人數</h1>
+                <h1>人數</h1>
                 <img src="image/selection.png" />
                 <br>
                 <select id="people">
@@ -77,10 +77,8 @@
                 </select>
             </div>
             <div class="col-md-12">
-                <button id="search" class="btn btn-dark">送出</button>
-            </div>
-            <div class="col">
-
+                <button id="search" class="btn btn-dark">查詢</button>
+                <p>搜尋結果在底下哦！</p>
             </div>
         </div>
 
@@ -88,6 +86,7 @@
     <!-- 選擇結束 -->
     <!-- 查詢結果 -->
     <div class="container" id="result_area">
+        <p>↓按一下即可展開↓</p>
         <div id="accordion">
             <div class="card">
                 <div class="card-header">
@@ -98,7 +97,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan1_result" class="collapse" data-parent="#accordion">
+                <div id="plan1_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan1_washingMachine">
@@ -131,7 +130,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan2_result" class="collapse" data-parent="#accordion">
+                <div id="plan2_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan2_washingMachine">
@@ -164,7 +163,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan3_result" class="collapse" data-parent="#accordion">
+                <div id="plan3_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan3_washingMachine">
@@ -197,7 +196,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan4_result" class="collapse" data-parent="#accordion">
+                <div id="plan4_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan4_washingMachine">
@@ -243,36 +242,43 @@
     <Script type="text/JavaScript">
 
         $(document).ready(function() {
-        
             $("#search").click(function() {
                 var budget = $("#budget").val();
                 var people = $("#people").val();
                 var search = budget + people ;
-                $.ajax({
-                    type: "GET",
-                    url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
-                    // url:"test.php?search="+search,
-                    dataType: "json",
-                    success: function(response) {
-                        // 成功要做的動作
-                        console.log(response);
-                        WriteResult(1,response.plan1);
-                        WriteResult(2,response.plan2);
-                        WriteResult(3,response.plan3);
-                        WriteResult(4,response.plan4);             
-                    },
-                    error: function(jqXHR,textStatus,errorThrown) {
-                        alert("發生錯誤: " + jqXHR.status);
-                        console.log("1 非同步呼叫返回失敗,XMLHttpResponse.readyState:"+jqXHR.readyState);
-                        console.log("2 非同步呼叫返回失敗,XMLHttpResponse.status:"+jqXHR.status);
-                        console.log("3 非同步呼叫返回失敗,textStatus:"+textStatus);
-                        console.log("4 非同步呼叫返回失敗,errorThrown:"+errorThrown);
-                    }
-                })
-                $('#result_area').show();
+                if (!budget) {
+                    alert("預算沒填哦！");
+                }
+                if(!people){
+                    alert("人數沒填哦！");
+                }
+                if(search.length==2)
+                {
+                    $.ajax({
+                        type: "GET",
+                        url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
+                        // url:"test.php?search="+search,
+                        dataType: "json",
+                        success: function(response) {
+                            // 成功要做的動作
+                            console.log(response);
+                            WriteResult(1,response.plan1);
+                            WriteResult(2,response.plan2);
+                            WriteResult(3,response.plan3);
+                            WriteResult(4,response.plan4);             
+                        },
+                        error: function(jqXHR,textStatus,errorThrown) {
+                            alert("發生錯誤: " + jqXHR.status);
+                            console.log("1 非同步呼叫返回失敗,XMLHttpResponse.readyState:"+jqXHR.readyState);
+                            console.log("2 非同步呼叫返回失敗,XMLHttpResponse.status:"+jqXHR.status);
+                            console.log("3 非同步呼叫返回失敗,textStatus:"+textStatus);
+                            console.log("4 非同步呼叫返回失敗,errorThrown:"+errorThrown);
+                        }
+                    })
+                    $('#result_area').show();
+                }
             })
         });
-
         function WriteResult(planValue,data) {
         $('#plan'+planValue+'_total').html(data.total)
         $('#plan'+planValue+'_washingMachine').html('<p>'+data.washingMachine+'</p>')

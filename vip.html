@@ -17,13 +17,12 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+<body id="vip">
     <header>
         <!-- navbar 表示這是一個 flex-box -->
         <!-- navbar-expand-md 負責轉手機版的寬度, lg:991以下轉手機版, md:767以下轉手機版, sm:575以下轉手機版 -->
         <!-- navbar-dark讓文字為白色, bg-dark負責背景顏色為暗底 -->
         <!-- fixed-top固定導覽列在最上方-->
-
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <!--  這是 LOGO 文字或圖片  -->
             <a class="navbar-brand" href="home.html">E<sup>3</sup></a>
@@ -55,7 +54,6 @@
     <!-- 選擇 -->
     <div class="container" id="select_area">
         <div class="row justify-content-around align-items-center text-center">
-
             <div class="col-md-4">
                 <h1>洗衣機</h1>
                 <img src="image/washing-machine.png" alt="" />
@@ -78,7 +76,6 @@
                     <option value="7">5人↑</option>
                     <option value="8">不需要</option>
                 </select>
-
             </div>
             <div class="col-md-4">
                 <h1>電視</h1>
@@ -92,7 +89,8 @@
                 </select>
             </div>
             <div class="col-md-12">
-                <button id="search" class="btn btn-dark">送出</button>
+                <button id="search" class="btn btn-dark">查詢</button>
+                <p>搜尋結果在底下哦！</p>
             </div>
         </div>
 
@@ -100,6 +98,7 @@
     <!-- 選擇結束 -->
     <!-- 查詢結果 -->
     <div class="container" id="result_area">
+        <p>↓按一下即可展開↓</p>
         <div id="accordion">
             <div class="card">
                 <div class="card-header">
@@ -110,7 +109,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan1_result" class="collapse" data-parent="#accordion">
+                <div id="plan1_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan1_washingMachine">
@@ -143,7 +142,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan2_result" class="collapse" data-parent="#accordion">
+                <div id="plan2_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan2_washingMachine">
@@ -176,7 +175,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan3_result" class="collapse" data-parent="#accordion">
+                <div id="plan3_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan3_washingMachine">
@@ -209,7 +208,7 @@
                         </div>
                     </a>
                 </div>
-                <div id="plan4_result" class="collapse" data-parent="#accordion">
+                <div id="plan4_result" class="collapse">
                     <div class="card-body">
                         <h3>洗衣機：</h3>
                         <div id="plan4_washingMachine">
@@ -255,37 +254,50 @@
     <Script type="text/JavaScript">
 
 $(document).ready(function() {
-
     $("#search").click(function() {
         var washingMachine = $("#washingMachine").val();
         var refrigerator = $("#refrigerator").val();
         var tv = $("#tv").val();
         var search = washingMachine + refrigerator + tv;
-        $.ajax({
+        if (!washingMachine) {
+            alert("洗衣機沒填哦！");
+        }
+        if(!refrigerator){
+            alert("冰箱沒填哦！");
+        }
+        if(!tv){
+            alert("電視沒填哦！");
+        }
+        console.log(search.length);
+        if (search.length==3) 
+        {
+            $.ajax({
             type: "GET",
             // url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
             url:"test.php?search="+search,
             dataType: "json",
-            success: function(response) {
+            success: function(response) 
+            {
                 // 成功要做的動作
                 console.log(response);
                 WriteResult(1,response.plan1);
                 WriteResult(2,response.plan2);
                 WriteResult(3,response.plan3);
                 WriteResult(4,response.plan4); 
-                // $('#plan1_total').html('<p>'+response.data.price+'</p>')
-                // $('#plan1_result').html('<p>洗衣機：'+response.data[0]+'</p>'+'<p>冰箱：'+response.data[1]+'</p>'+'<p>電視：'+response.data.name+'</p>')            
             },
-                error: function(jqXHR,textStatus,errorThrown) {
+            error: function(jqXHR,textStatus,errorThrown) 
+            {
                 alert("發生錯誤: " + jqXHR.status);
                 console.log("1 非同步呼叫返回失敗,XMLHttpResponse.readyState:"+jqXHR.readyState);
                 console.log("2 非同步呼叫返回失敗,XMLHttpResponse.status:"+jqXHR.status);
                 console.log("3 非同步呼叫返回失敗,textStatus:"+textStatus);
                 console.log("4 非同步呼叫返回失敗,errorThrown:"+errorThrown);
             }
-        })
-        $('#result_area').show();
+            })
+            $('#result_area').show();
+        }
     })
+        
     function WriteResult(planValue,data) {
         $('#plan'+planValue+'_total').html(data.total)
         $('#plan'+planValue+'_washingMachine').html('<p>'+data.washingMachine+'</p>')
