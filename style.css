@@ -16,34 +16,68 @@ body{
     right: 0;
     margin: 0 auto;
 }
-.jumbotron{
-    margin: 0 auto;
+ .navbar-brand{
+    margin: 0px;
+    font-size: 50px;
+    font-family: 'Indie Flower', cursive;
+    padding: 0px 25px;
 }
-/* 客製化&懶人版 */
+.nav-link{
+    font-size: 25px;
+    margin: 0px 9px;
+}
+.jumbotron{
+    margin: 10px auto;
+    padding-top: 90px;
+    padding-bottom: 3px;
+}
+.jumbotron h1{
+    font-weight: bold;
+}
+
+footer{
+    display: block;
+    margin: 0 5px;
+}
 #select_area{
-    top: 100px;
     width: 100vw;
     height: 80vh;
     position: relative;
     border: 1px solid black;
     border-radius: 5px 5px 5px 5px;
+    top: 110px;
+}
+#select_area button{
+    font-size: 25px;
+}
+#blank{
+    height: 15vh;
 }
 #result_area{
-    top: 100px;
     width: 100vw;
-    height: 80vh;
+    height: 60vh;
     position: relative;
-    margin: 20px auto;
+    display: none;
+    margin: 130px auto;
 }
+#result_area .card-header{
+    padding: 0 65px;
+}
+#result_area a{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+#result_area h3{
+    font-size: 25px;
+    margin: 5px 40px;
 
-/* .row{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-} */
+}
+#result_area p{
+    font-size: 20px;
+    margin: 0 50px;
+    padding-left: 15px;
+}
 .row h1{
     font-size: 60px;
     margin: 3vh 0vh;
@@ -52,33 +86,61 @@ body{
     margin: 3vh 0px;
     font-size: 25px;
 }
-.card{
+#home_area .card{
     width: 70%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: .5s;
 }
-.card-title{    
+#home_area .card-title{    
     display:flex;
     justify-content:center;
     align-items:center; 
     text-decoration: none; 
     color: black;
 }
-.card:hover {
+#home_area .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-5%);
 }
-@media only screen and (min-width: 321px) and (max-width: 768px) {
+@media only screen and (min-width: 280px) and (max-width: 765px) {
+    .jumbotron h1{
+        font-size: 40px;
+    }
+    .jumbotron p{
+        font-size: 20px;
+    }
+    #home_area{
+        height: 115vh;
+    }
+    
+    #home_area .card{
+        width: 60%;
+    }
     #select_area{
-        top: 80px;
+        top: 105px;
         width: 90vw;
-        height: 180vh;
+        height: 235vh;
+    }
+    #result_area{
+        height: 80vh;
+    }
+    #result_area .card-header{
+        padding: 0 40px;
+    }
+    #result_area a{
+        font-size: 20px;
+    }
+    #result_area h3{
+        font-size: 20px;
+        margin: 5px 20px;
+
+    }
+    #result_area p{
+        font-size: 18px;
+        margin: 0 25px;
+        padding-left: 15px;
     }
     .row h1{
         font-size: 40px;
     }
-    .row img{
-        height: 200px;
-    }
-
 }

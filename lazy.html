@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
     <!-- fixed-top固定導覽列在最上方-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <!--  這是 LOGO 文字或圖片  -->
-        <a class="navbar-brand" href="home.html">LOGO</a>
+        <a class="navbar-brand" href="home.html">E<sup>3</sup></a>
         <!--  這是手機版時右上角呈現的選單按鈕, 注意:data-target表示按下這個按鈕時要控制展開收合的物件ID名稱  -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Nav" aria-controls="navbarNav"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -54,11 +55,11 @@
                 <h1>預算</h1>
                 <img src="image/money.png" alt="" />
                 <br>
-                <select name="budget" require=true>
+                <select id="budget" require=true>
                     <option value="" selected hidden>請選擇預算</option>
-                    <option value="1">1~2萬</option>
+                    <option value="1">2~3萬</option>
                     <option value="2">3~4萬</option>
-                    <option value="3">5~6萬</option>
+                    <option value="3">4~5萬</option>
                     <option value="4">頂級規格</option>
                     <option value="5">不需要</option>
                 </select>
@@ -67,7 +68,7 @@
                 <h1>家庭成員人數</h1>
                 <img src="image/selection.png" />
                 <br>
-                <select name="people">
+                <select id="people">
                     <option value="" selected hidden>請選擇家庭成員</option>
                     <option value="6">1~2人</option>
                     <option value="7">3~4人</option>
@@ -87,61 +88,198 @@
     <!-- 選擇結束 -->
     <!-- 查詢結果 -->
     <div class="container" id="result_area">
-        <table class="table table-bordered table-striped table-hover ">
-            <tr>
-                <td>
-                    <h2>方案一：最高規格</h2>
-                    <div id="plan1_total">total1</div>
-                </td>
-                <td>
-                    <div id="plan1_result">result1</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="plan2_result">result2</div>
-                </td>
-                <td>
-                    <h2>方案二：CP值最高</h2>
-                    <div id="plan2_total">total2</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h2>方案三：最省電</h2>
-                    <div id="plan3_total">total3</div>
-                </td>
-                <td>
-                    <div id="plan3_result">result3</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="plan4_result">result4</div>
-                </td>
-                <td>
-                    <h2>方案四：最低規格</h2>
-                    <div id="plan4_total">total4</div>
-                </td>
-            </tr>
-        </table>
-
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#plan1_result">
+                        方案一：最高規格
+                        <div id="plan1_total" class="total">
+                            $XXXX
+                        </div>
+                    </a>
+                </div>
+                <div id="plan1_result" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h3>洗衣機：</h3>
+                        <div id="plan1_washingMachine">
+                            <p>品牌名稱 產品型號</p>
+                            <p>公升數</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>冰箱：</h3>
+                        <div id="plan1_refrigerator">
+                            <p>品牌名稱 產品型號</p>
+                            <p>EF值</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>電視：</h3>
+                        <div id="plan1_tv">
+                            <p>品牌名稱 產品型號</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header text-right">
+                    <a class="card-link" data-toggle="collapse" href="#plan2_result">
+                        方案二：CP值最高
+                        <div id="plan2_total" class="total">
+                            $XXXX
+                        </div>
+                    </a>
+                </div>
+                <div id="plan2_result" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h3>洗衣機：</h3>
+                        <div id="plan2_washingMachine">
+                            <p>品牌名稱 產品型號</p>
+                            <p>公升數</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>冰箱：</h3>
+                        <div id="plan2_refrigerator">
+                            <p>品牌名稱 產品型號</p>
+                            <p>EF值</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>電視：</h3>
+                        <div id="plan2_tv">
+                            <p>品牌名稱 產品型號</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#plan3_result">
+                        方案三：最省電
+                        <div id="plan3_total" class="total">
+                            $XXXX
+                        </div>
+                    </a>
+                </div>
+                <div id="plan3_result" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h3>洗衣機：</h3>
+                        <div id="plan3_washingMachine">
+                            <p>品牌名稱 產品型號</p>
+                            <p>公升數</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>冰箱：</h3>
+                        <div id="plan3_refrigerator">
+                            <p>品牌名稱 產品型號</p>
+                            <p>EF值</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>電視：</h3>
+                        <div id="plan3_tv">
+                            <p>品牌名稱 產品型號</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header text-right">
+                    <a class="card-link" data-toggle="collapse" href="#plan4_result">
+                        方案四：最低規格
+                        <div id="plan4_total" class="total">
+                            $XXXX
+                        </div>
+                    </a>
+                </div>
+                <div id="plan4_result" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h3>洗衣機：</h3>
+                        <div id="plan4_washingMachine">
+                            <p>品牌名稱 產品型號</p>
+                            <p>公升數</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>冰箱：</h3>
+                        <div id="plan4_refrigerator">
+                            <p>品牌名稱 產品型號</p>
+                            <p>EF值</p>
+                            <p>$XXXXX</p>
+                        </div>
+                        <h3>電視：</h3>
+                        <div id="plan4_tv">
+                            <p>品牌名稱 產品型號</p>
+                            <p>耗電量</p>
+                            <p>$XXXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- 查詢結果 -->
+    <div class="container" id="blank">
+        <br>
+    </div>
     <!-- Footer -->
-    <footer class="page-footer font-small blue">
+    <footer class="page-footer font-small">
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
+        <div class="footer-copyright text-left py-3">
             <sub>
                 <div>Icons made by <a href="https://www.flaticon.com/authors/dimitry-miroliubov"
                         title="Dimitry Miroliubov">Dimitry
-                        Miroliubov</a> and <a href="https://www.flaticon.com/authors/freepik"
-                        title="Freepik">Freepik</a>
-                    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                        Miroliubov</a> and <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik
                 </div>
                 <!-- Copyright -->
+            </sub>
     </footer>
     <!-- Footer -->
+    <Script type="text/JavaScript">
+
+        $(document).ready(function() {
+        
+            $("#search").click(function() {
+                var budget = $("#budget").val();
+                var people = $("#people").val();
+                var search = budget + people ;
+                $.ajax({
+                    type: "GET",
+                    url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
+                    // url:"test.php?search="+search,
+                    dataType: "json",
+                    success: function(response) {
+                        // 成功要做的動作
+                        console.log(response);
+                        WriteResult(1,response.plan1);
+                        WriteResult(2,response.plan2);
+                        WriteResult(3,response.plan3);
+                        WriteResult(4,response.plan4);             
+                    },
+                    error: function(jqXHR,textStatus,errorThrown) {
+                        alert("發生錯誤: " + jqXHR.status);
+                        console.log("1 非同步呼叫返回失敗,XMLHttpResponse.readyState:"+jqXHR.readyState);
+                        console.log("2 非同步呼叫返回失敗,XMLHttpResponse.status:"+jqXHR.status);
+                        console.log("3 非同步呼叫返回失敗,textStatus:"+textStatus);
+                        console.log("4 非同步呼叫返回失敗,errorThrown:"+errorThrown);
+                    }
+                })
+                $('#result_area').show();
+            })
+        });
+
+        function WriteResult(planValue,data) {
+        $('#plan'+planValue+'_total').html(data.total)
+        $('#plan'+planValue+'_washingMachine').html('<p>'+data.washingMachine+'</p>')
+        $('#plan'+planValue+'_refrigerator').html('<p>'+data.refrigerator+'</p>')
+        $('#plan'+planValue+'_tv').html('<p>'+data.tv+'</p>')
+        }
+        </Script>
 </body>
 
 </html>
