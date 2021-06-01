@@ -202,7 +202,7 @@
             <div class="card">
                 <div class="card-header text-right">
                     <a class="card-link" data-toggle="collapse" href="#plan4_result">
-                        方案四：最低規格
+                        方案四：最便宜
                         <div id="plan4_total" class="total">
                             $XXXX
                         </div>
@@ -269,12 +269,12 @@ $(document).ready(function() {
             alert("電視沒填哦！");
         }
         console.log(search.length);
-        if (search.length==3) 
+        if (search.length==3||search.length==4) 
         {
             $.ajax({
             type: "GET",
-            // url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
-            url:"test.php?search="+search,
+            url: "https://eeenviorment.000webhostapp.com/vip_test.php?search="+search,
+            //url:"vip_test.php?search="+search,
             dataType: "json",
             success: function(response) 
             {

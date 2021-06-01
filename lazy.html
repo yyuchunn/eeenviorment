@@ -190,7 +190,7 @@
             <div class="card">
                 <div class="card-header text-right">
                     <a class="card-link" data-toggle="collapse" href="#plan4_result">
-                        方案四：最低規格
+                        方案四：最便宜
                         <div id="plan4_total" class="total">
                             $XXXX
                         </div>
@@ -233,7 +233,8 @@
             <sub>
                 <div>Icons made by <a href="https://www.flaticon.com/authors/dimitry-miroliubov"
                         title="Dimitry Miroliubov">Dimitry
-                        Miroliubov</a> and <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik
+                        Miroliubov</a> and <a href="https://www.flaticon.com/authors/freepik"
+                        title="Freepik">Freepik</a>
                 </div>
                 <!-- Copyright -->
             </sub>
@@ -242,6 +243,7 @@
     <Script type="text/JavaScript">
 
         $(document).ready(function() {
+        
             $("#search").click(function() {
                 var budget = $("#budget").val();
                 var people = $("#people").val();
@@ -256,8 +258,8 @@
                 {
                     $.ajax({
                         type: "GET",
-                        url: "https://eeenviorment.000webhostapp.com/test.php?search="+search,
-                        // url:"test.php?search="+search,
+                        url: "https://eeenviorment.000webhostapp.com/lazy_test.php?search="+search,
+                        // url:"lazy_test.php?search="+search,
                         dataType: "json",
                         success: function(response) {
                             // 成功要做的動作
@@ -279,6 +281,7 @@
                 }
             })
         });
+
         function WriteResult(planValue,data) {
         $('#plan'+planValue+'_total').html(data.total)
         $('#plan'+planValue+'_washingMachine').html('<p>'+data.washingMachine+'</p>')

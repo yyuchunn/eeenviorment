@@ -5,7 +5,7 @@ body{
 }
 #home_area{
     width: 100vw;
-    height: 60vh;
+    height: 500px;
     position: relative;
 }
 #home_area .row,#select_area .row{
@@ -48,7 +48,7 @@ footer{
 }
 #select_area{
     width: 100vw;
-    height: 100vh;
+    height: 800px;
     position: relative;
     border: 1px solid black;
     border-radius: 5px 5px 5px 5px;
@@ -64,11 +64,11 @@ footer{
     height: 30vh;
 }
 #blank{
-    height: 15vh;
+    height: 50px;
 }
 #result_area{
     width: 100vw;
-    height: 350vh;
+    height: 2000px;
     position: relative;
     display: none;
     margin: 130px auto;
@@ -124,7 +124,7 @@ footer{
         font-size: 20px;
     }
     #home_area{
-        height: 120vh;
+        height: 750px;
     }
     #home_area .card{
         width: 50%;
@@ -134,17 +134,21 @@ footer{
         width: 90vw;
     }
     #vip #select_area{
-        height: 140vh;
+        /* height: 140vw; */
+        height: 800px;
     }
     #lazy #select_area{
-        height: 130vh;
+        /* height: 180vw; */
+        height: 700px;
     }
     #select_area img{
         width: 25%;
     }
-    #result_area{
-        height: 320vh;
-    }
+    /*#result_area{
+        /* height:1600px; */
+        /* height: 400vw;
+        
+    }*/
     #result_area .card-header{
         padding: 0 40px;
     }
