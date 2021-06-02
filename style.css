@@ -21,6 +21,7 @@ body{
     padding-bottom: 3px;
     padding-left: 15px;
     padding-right: 15px;
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
 }
 .navbar-brand{
     margin: 0px;
@@ -164,11 +165,11 @@ footer{
     }
     #vip #select_area{
         /* height: 140vw; */
-        height: 800px;
+        height: 850px;
     }
     #lazy #select_area{
         /* height: 180vw; */
-        height: 700px;
+        height: 800px;
     }
     #select_area img{
         width: 25%;
