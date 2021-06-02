@@ -37,6 +37,8 @@ body{
     margin: 10px auto;
     padding-top: 90px;
     padding-bottom: 3px;
+    background-color: #c7d6d8;
+    color: black;
 }
 .jumbotron h1{
     font-weight: bold;
@@ -50,7 +52,7 @@ footer{
     width: 100vw;
     height: 800px;
     position: relative;
-    border: 1px solid black;
+    border: 2px solid #83b1c9;
     border-radius: 5px 5px 5px 5px;
     top: 115px;
 }
@@ -68,7 +70,7 @@ footer{
 }
 #result_area{
     width: 100vw;
-    height: 2000px;
+    height: 2300px;
     position: relative;
     display: none;
     margin: 130px auto;
@@ -115,7 +117,34 @@ footer{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-5%);
 }
-
+.navbar{
+    background-color: #83B1C9;
+    
+}
+/* 標題底色 */
+#plan1 .card-header,#plan3 .card-header {
+    background-color: #c6d2be; 
+}
+#plan2 .card-header,#plan4 .card-header {
+    background-color: #83B1C9; 
+}
+/* 標題底色 */
+/* 標題文字顏色 */
+/*#plan1 .card-header a,#plan3 .card-header a{
+    color: white;
+}*/
+/* #plan2 .card-header a,#plan4 .card-header a{
+    color: white;
+} */
+/* 標題文字顏色 */
+/* 內容底色&文字顏色 */
+#plan1_result,#plan3_result{
+    background-color: #EBEBE3;
+    /* color: white; */
+}
+#plan2_result,#plan4_result,.btn{
+    background-color: #c7d6d8;
+}
 @media only screen and (max-width: 767px){
     .jumbotron h1{
         font-size: 40px;

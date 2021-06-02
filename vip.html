@@ -23,7 +23,7 @@
         <!-- navbar-expand-md 負責轉手機版的寬度, lg:991以下轉手機版, md:767以下轉手機版, sm:575以下轉手機版 -->
         <!-- navbar-dark讓文字為白色, bg-dark負責背景顏色為暗底 -->
         <!-- fixed-top固定導覽列在最上方-->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <!--  這是 LOGO 文字或圖片  -->
             <a class="navbar-brand" href="home.html">E<sup>3</sup></a>
             <!--  這是手機版時右上角呈現的選單按鈕, 注意:data-target表示按下這個按鈕時要控制展開收合的物件ID名稱  -->
@@ -89,7 +89,7 @@
                 </select>
             </div>
             <div class="col-md-12">
-                <button id="search" class="btn btn-dark">查詢</button>
+                <button id="search" class="btn">查詢</button>
                 <p>搜尋結果在底下哦！</p>
             </div>
         </div>
@@ -100,7 +100,7 @@
     <div class="container" id="result_area">
         <p>↓按一下即可展開↓</p>
         <div id="accordion">
-            <div class="card">
+            <div class="card" id="plan1">
                 <div class="card-header">
                     <a class="card-link" data-toggle="collapse" href="#plan1_result">
                         方案一：最高規格
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="plan2">
                 <div class="card-header text-right">
                     <a class="card-link" data-toggle="collapse" href="#plan2_result">
                         方案二：CP值最高
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="plan3">
                 <div class="card-header">
                     <a class="card-link" data-toggle="collapse" href="#plan3_result">
                         方案三：最省電
@@ -199,7 +199,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="plan4">
                 <div class="card-header text-right">
                     <a class="card-link" data-toggle="collapse" href="#plan4_result">
                         方案四：最便宜
