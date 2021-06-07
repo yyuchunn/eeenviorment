@@ -71,7 +71,7 @@ footer{
 }
 #result_area{
     width: 100vw;
-    height: 1000px;
+    height: 1800px;
     position: relative;
     display: none;
     margin: 130px auto;
@@ -91,8 +91,14 @@ footer{
 }
 #result_area p{
     font-size: 20px;
-    margin: 0 50px;
+    margin-left: 50px;
+    margin-right: 0px;
+    margin-bottom: 0px;
     padding-left: 15px;
+}
+#result_area #hint p{
+    font-size: 18px;
+    margin: 0 50px;
 }
 .row h1{
     font-size: 60px;
@@ -129,15 +135,6 @@ footer{
 #plan2 .card-header,#plan4 .card-header {
     background-color: #83B1C9; 
 }
-/* 標題底色 */
-/* 標題文字顏色 */
-/*#plan1 .card-header a,#plan3 .card-header a{
-    color: white;
-}*/
-/* #plan2 .card-header a,#plan4 .card-header a{
-    color: white;
-} */
-/* 標題文字顏色 */
 /* 內容底色&文字顏色 */
 #plan1_result,#plan3_result{
     background-color: #EBEBE3;
@@ -175,8 +172,7 @@ footer{
         width: 25%;
     }
     #result_area{
-        height:2400px;
-        
+        height:3450px;
     }
     #result_area .card-header{
         padding: 0 40px;
@@ -190,7 +186,10 @@ footer{
     }
     #result_area p{
         font-size: 18px;
-        margin: 0 25px;
+        /* margin: 0 25px; */
+        margin-left: 25px;
+        margin-right: 0px;
+        margin-bottom: 0px;
         padding-left: 15px;
     }
     .row h1{
@@ -202,5 +201,9 @@ footer{
    /* css for pad ....... */
     #select_area img{
         width: 50%;
+    }
+    #result_area{
+        width: 100vw;
+        height: 2000px;
     }
 }

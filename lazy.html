@@ -87,7 +87,7 @@
     <!-- 選擇結束 -->
     <!-- 查詢結果 -->
     <div class="container" id="result_area">
-        <p class="text-center">年耗電以消耗電量(度/月)×12個月估算，實際耗電量依實際使用狀況而定</p>
+        <p class="text-center" style="margin: 0px auto;">年耗電以消耗電量(度/月)×12個月估算，實際耗電量依實際使用狀況而定</p>
         <p>↓按一下即可展開↓</p>
         <div id="accordion">
             <div class="card" id="plan1">
@@ -255,6 +255,52 @@
                     </div>
                 </div>
             </div>
+            <div class="card bg-light">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#save">
+                        <div>
+                            平均一年省電度數(KWH)和金額(元)<br>
+                            (與非標章機種比較)
+                        </div>
+                    </a>
+                </div>
+                <div id="save" class="collapse show">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>洗衣機：</h3>
+                                <div id="save_washingMachine">
+                                    <p>省電度數：XXX</p>
+                                    <p>省錢金額：XXX</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>冰箱：</h3>
+                                <div id="save_refrigerator">
+                                    <p>省電度數：XXX</p>
+                                    <p>省錢金額：XXX</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>電視：</h3>
+                                <div id="save_tv">
+                                    <p>省電度數：XXX</p>
+                                    <p>省錢金額：XXX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" id="hint">
+                <div class="col-md-12">
+                    <p>洗衣機:計算假設條件：每年洗衣208次，非標章機種之平均全流程耗電量取0.0127kWh/kg</p>
+                    <p>冰箱:計算假設條件：非標章電冰箱EF值取100年電冰箱能源因數值標準，節電度數為與同等級非標章產品之比較。</p>
+                    <p>電視:計算假設條件：每天待機時數16小時，非標章機種之平均待機電力值取1W，開啟模式耗電取標章基準值之1.13倍以下所計算數值，以每天待機時數16小時概估</p>
+                </div>
+            </div>
         </div>
     </div>
     <!-- 查詢結果 -->
@@ -293,8 +339,8 @@
                 {
                     $.ajax({
                         type: "GET",
-                        url: "https://eeenviorment.000webhostapp.com/lazy_test.php?search="+search,
-                        //url:"lazy_test.php?search="+search,
+                        //url: "https://eeenviorment.000webhostapp.com/lazy_test.php?search="+search,
+                        url:"lazy_test.php?search="+search,
                         dataType: "json",
                         success: function(response) {
                             // 成功要做的動作
@@ -302,7 +348,8 @@
                             WriteResult(1,response.plan1);
                             WriteResult(2,response.plan2);
                             WriteResult(3,response.plan3);
-                            WriteResult(4,response.plan4);             
+                            WriteResult(4,response.plan4); 
+                            WriteSaveValue(people);            
                         },
                         error: function(jqXHR,textStatus,errorThrown) {
                             alert("發生錯誤: " + jqXHR.status);
@@ -323,6 +370,30 @@
         $('#plan'+planValue+'_refrigerator').html('<p>'+data.refrigerator+'</p>')
         $('#plan'+planValue+'_tv').html('<p>'+data.tv+'</p>')
         }
+        function WriteSaveValue(value_people) {
+        switch (value_people) {
+            case '6':
+                $(save_washingMachine).html('<p>省電度數：4.8</p><p>省錢金額：13.2</p>');
+                $(save_refrigerator).html('<p>省電度數：110.8</p><p>省錢金額：305.3</p>');
+                $(save_tv).html('<p>省電度數：75.9</p><p>省錢金額：194.6</p>');
+                break;
+            case '7':
+                $(save_washingMachine).html('<p>省電度數：12.8</p><p>省錢金額：35.3</p>');
+                $(save_refrigerator).html('<p>省電度數：150.0</p><p>省錢金額：413.5</p>');
+                $(save_tv).html('<p>省電度數：86.7</p><p>省錢金額：222.2</p>');
+                break;
+            case '8':
+                $(save_washingMachine).html('<p>省電度數：20.6</p><p>省錢金額：56.8</p>');
+                $(save_refrigerator).html('<p>省電度數：177.8</p><p>省錢金額：490.3</p>');
+                $(save_tv).html('<p>省電度數：70.4</p><p>省錢金額：180.4</p>');
+                break;
+            default:
+                $(save_washingMachine).html('<p>無</p>');
+                $(save_refrigerator).html('<p>無</p>');
+                $(save_tv).html('<p>無</p>');
+                break;
+        }
+    }
         </Script>
 </body>
 
