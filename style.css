@@ -71,7 +71,7 @@ footer{
 }
 #result_area{
     width: 100vw;
-    height: 2300px;
+    height: 1000px;
     position: relative;
     display: none;
     margin: 130px auto;
@@ -174,11 +174,10 @@ footer{
     #select_area img{
         width: 25%;
     }
-    /*#result_area{
-        /* height:1600px; */
-        /* height: 400vw;
+    #result_area{
+        height:2400px;
         
-    }*/
+    }
     #result_area .card-header{
         padding: 0 40px;
     }
