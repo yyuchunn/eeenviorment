@@ -192,6 +192,11 @@ footer{
         margin-bottom: 0px;
         padding-left: 15px;
     }
+    #result_area #hint p{
+        font-size: 18px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
     .row h1{
         font-size: 40px;
     }
